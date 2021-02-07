@@ -1,86 +1,110 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <!-- head with Boostrap and Google Fonts CDN links and css style doc link -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Merienda+One&display=swap"
+      rel="stylesheet"
+    />
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
-    integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous" />
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="style.css" />
 
-  <title>Work Day Scheduler</title>
-</head>
+    <title>Work Day Daily Scheduler</title>
+  </head>
+  <!-- Gradient background image for the whole page -->
+  <style>
+    body {
+      background-color: #0093e9;
+      background-image: linear-gradient(160deg, #0093e9 0%, #80d0c7 100%);
+    }
+    img {
+      /* border: 1px solid #ddd; */
+      border-radius: 4px;
+      padding: 5px;
+      width: 120px;
+    }
+  </style>
+  <!-- Provided header -->
+  <body>
+    <header class="jumbotron jumbotron-fluid">
+      <div class="container-fluid">
+        <h1 class="display-3">Work Day Daily Scheduler</h1>
+        <p class="lead">A simple calendar app for scheduling your work day</p>
+        <p id="currentDay" class="lead"></p>
+        <p class="howtowork" style="float: left">
+          <img src="WorkinOn_Green.png" alt="Green" />
+          This green means you are 'Working On' the task.
+        </p>
+        <p class="howtocomplete">
+          <img src="Complete_Red.png" alt="Red" />
+          This red means this task is 'Complete'.
+        </p>
+        <p class="howtosave">Don't forget to Save!</p>
+        <p class="localstorsave">
+          Your input is saved to your browser's local storage.
+          To delete all your data, please click below.
+          <!-- Link here to article -->
+          <!-- clear button -->
+          <section class="text-center p-3">
+            <button type="button" class="btn btn-danger">Clear Data</button>
+          </section>
+        </p>
+      </div>
+    </header>
+    <!-- Bootstrap input group containing 3 option toggle dropdown, input area for text, and time of day -->
+    <main class="container schedule">
+      <div class="input-group input-group-lg schedule-day">
+        <button
+          type="button"
+          class="btn btn-outline-secondary dropdown-toggle dropdown-toggle-split"
+          data-bs-toggle="dropdown"
+          aria-expanded="false"
+        >
+          <span class="sr-only">Toggle Dropdown</span>
+        </button>
+        <ul class="dropdown-menu">
+          <li><a class="dropdown-item working" href="#">Working On</a></li>
+          <li><a class="dropdown-item complete" href="#">Complete</a></li>
+          <li><a class="dropdown-item save" href="#">Save</a></li>
+        </ul>
 
-<body>
-  <header class="jumbotron jumbotron-fluid">
-    <div class="container-fluid">
-      <h1 class="display-3">Work Day Scheduler</h1>
-      <p class="lead">A simple calendar app for scheduling your work day</p>
+        <input
+          type="text"
+          class="form-control"
+          id="task-0"
+          aria-label="Text input with segmented dropdown button"
+          name="name-0"
+        />
+        <span class="input-group-text schedule-time">9am</span>
+      </div>
+    </main>
+    <!-- Javascript script sources for jQuery, Bootstrap, Moment, and script.js -->
+    <script
+      src="https://code.jquery.com/jquery-3.5.1.min.js"
+      integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
+      crossorigin="anonymous"
+    ></script>
 
-      <p id="currentDay" class="lead">localTime</p>
-    </div>
-  </header>
-  <main class="container schedule">
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"
+      crossorigin="anonymous"
+    ></script>
 
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"
+      integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ=="
+      crossorigin="anonymous"
+    ></script>
 
-    <div class="input-group input-group-lg schedule-day">
-      <!-- <div class="input-group-prepend">
-        <button class="btn btn-outline-secondary savebtn" type="button">Save</button>
-      </div> -->
-
-
-      <button type="button" class="btn btn-outline-secondary dropdown-toggle dropdown-toggle-split"
-        data-bs-toggle="dropdown" aria-expanded="false">
-        <span class="sr-only">Toggle Dropdown</span>
-      </button>
-
-      <ul class="dropdown-menu">
-        <li><a class="dropdown-item working" href="#">Working On</a></li>
-        <li><a class="dropdown-item complete" href="#">Complete</a></li>
-        <li><a class="dropdown-item save" href="#">Save</a></li>
-        <!-- <li><a class="dropdown-item" href="#">Something else here</a></li> -->
-        <!-- <li>
-          <hr class="dropdown-divider">
-        </li>
-        <li><a class="dropdown-item" href="#">Separated link</a></li> -->
-      </ul>
-
-      <input type="text" class="form-control" id="task-0" aria-label="Text input with segmented dropdown button"
-        name="task-0">
-      <span class="input-group-text schedule-time">9am</span>
-
-    </div>
-
-
-  </main>
-
-  <script src="https://code.jquery.com/jquery-3.5.1.min.js"
-    integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
-
-  <script src="https://cdn.jsdelivr.net/npm/luxon@1.25.0/build/global/luxon.min.js"
-    integrity="sha256-OVk2fwTRcXYlVFxr/ECXsakqelJbOg5WCj1dXSIb+nU=" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"
-    crossorigin="anonymous"></script>
-  <script>
-
-
-    // luxonOutput.textContent=dt.toLocaleString(DateTime.DATETIME_MED);
-
-  </script>
-  <!-- 
-  // var DateTime = luxon.DateTime;
-  // var localTime = DateTime.local();
-  // var dt = luxon.DateTime().local()
-  // var todayDate = dt.toLocaleString(DateTime.DATETIME_MED)
-  // console.log(todayDate); -->
-
-
-
-  <script src="script.js"></script>
-</body>
-
+    <script src="script.js"></script>
+  </body>
 </html>
