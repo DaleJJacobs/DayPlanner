@@ -1,0 +1,38 @@
+/* This establishes a font for the body */
+body {
+  font-family: "Merienda One", cursive;
+  font-size: 20px;
+  line-height: 1;
+  line-height: 200%;
+}
+/* Establishes style for the thumbnail images of colors used */
+img {
+  border-radius: 4px;
+  padding: 5px;
+  width: 120px;
+}
+/* Style of the input form without text or color */
+.form-control {
+  background-color: #cdcdcd;
+  border: 0.2px solid #6c757d;
+  border-radius: 0.25rem;
+}
+/* Style for the toggle button */
+.dropdown-toggle-split {
+  background-color: #cdcdcd;
+}
+/* Style for the time of day section of the form */
+.schedule-time {
+  background-color: #cdcdcd;
+  border: 0.2px solid #6c757d;
+  border-radius: 0.25rem;
+}
+/* Style for the jumbotron bootstrap element */
+.jumbotron {
+  text-align: center;
+  background-color: transparent;
+  color: black;
+  border-radius: 0;
+  border-bottom: 5px solid black;
+  padding-bottom: 40px;
+}

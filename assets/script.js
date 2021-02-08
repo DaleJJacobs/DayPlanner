@@ -21,25 +21,23 @@ $(function () {
   });
   // Function that selects the complete button 'click' and changes the color of input box
   $(".complete").click(function (e) {
+    e.preventDefault();
     $(this).closest("ul").siblings("input").css({
       "background-color": "#f6f0c4",
       "background-image": "linear-gradient(315deg, #f6f0c4 0%, #d99ec9 74%)",
     });
   });
-
+  // Function that selects the working on button 'click' and changes the color of the input box
   $(".working").click(function (g) {
-    console.log("working on has been clicked");
-    var workingVar = $(this).closest("ul").siblings("input").css({
+    g.preventDefault();
+    $(this).closest("ul").siblings("input").css({
       "background-color": "#f2cf07",
       "background-image": "linear-gradient(315deg, #f2cf07 0%, #55d284 74%)",
     });
-    console.log(workingVar);
   });
-
+  // Function that selects the save button 'click' and places the input provided in local storage along with the element color
   $(".save").click((f) => {
     f.preventDefault();
-    console.log(f.target);
-    console.log("this is ", $(this));
     var input = $(f.target).closest(".dropdown-menu").next();
     var key = input.attr("id");
     var task = input.val();
@@ -47,25 +45,22 @@ $(function () {
     var workingImage = input.css("background-image");
     var elementInfo = { input: task, color: workingStyle, image: workingImage };
     localStorage.setItem(key, JSON.stringify(elementInfo));
-    console.log(workingStyle, workingImage, elementInfo);
   });
-
+  // Function that gets the value of each input from local storage and places it back where it originated
   $("input").each(function () {
-    console.log("What is ", $(this));
     var taskID = $(this).attr("id");
-    console.log(taskID);
-    // var id = $(this).attr('id');
     var getValue = JSON.parse(localStorage.getItem(taskID));
-    console.log(getValue ? getValue["input"] : "does not work"); //getValue.input
     document.getElementById(taskID).value = getValue ? getValue.input : "";
     document.getElementById(taskID).style.backgroundColor = getValue
       ? getValue.color
-      : "white";
+      : "#CDCDCD";
     document.getElementById(taskID).style.backgroundImage = getValue
       ? getValue.image
-      : "white";
+      : "#CDCDCD";
   });
-  $(".btn-danger").click(() => {
+  // Selects clear data button 'click' and empties the user's local storage
+  $(".btn-danger").click((h) => {
+    h.preventDefault(h);
     localStorage.clear();
     location.reload();
   });

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <!-- head with Boostrap and Google Fonts CDN links and css style doc link -->
+    <!-- head with Boostrap and Google Fonts CDN links and css style doc link and my favicon :> -->
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
@@ -15,7 +15,9 @@
       rel="stylesheet"
     />
 
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="assets/style.css" />
+
+    <link rel="shortcut icon" href="assets/favicon.ico" />
 
     <title>Work Day Daily Scheduler</title>
   </head>
@@ -25,14 +27,8 @@
       background-color: #0093e9;
       background-image: linear-gradient(160deg, #0093e9 0%, #80d0c7 100%);
     }
-    img {
-      /* border: 1px solid #ddd; */
-      border-radius: 4px;
-      padding: 5px;
-      width: 120px;
-    }
   </style>
-  <!-- Provided header -->
+  <!-- Provided header with site instructions and thumbnail examples of the colors used -->
   <body>
     <header class="jumbotron jumbotron-fluid">
       <div class="container-fluid">
@@ -40,23 +36,31 @@
         <p class="lead">A simple calendar app for scheduling your work day</p>
         <p id="currentDay" class="lead"></p>
         <p class="howtowork" style="float: left">
-          <img src="WorkinOn_Green.png" alt="Green" />
+          <img
+            src="assets/WorkinOn_Green.png"
+            alt="Green"
+            style="border-radius: 25px"
+          />
           This green means you are 'Working On' the task.
         </p>
         <p class="howtocomplete">
-          <img src="Complete_Red.png" alt="Red" />
-          This red means this task is 'Complete'.
+          <img
+            src="assets/Complete_Red.png"
+            alt="Red"
+            style="border-radius: 25px"
+          />
+          This red means the task is 'Complete'.
         </p>
         <p class="howtosave">Don't forget to Save!</p>
         <p class="localstorsave">
-          Your input is saved to your browser's local storage.
-          To delete all your data, please click below.
-          <!-- Link here to article -->
-          <!-- clear button -->
-          <section class="text-center p-3">
-            <button type="button" class="btn btn-danger">Clear Data</button>
-          </section>
+          Your input is saved to your browser's local storage. To delete all
+          your data, please click below.
         </p>
+
+        <!-- Clear Data button which clears the user's local storage -->
+        <section class="text-center p-3">
+          <button type="button" class="btn btn-danger">Clear Data</button>
+        </section>
       </div>
     </header>
     <!-- Bootstrap input group containing 3 option toggle dropdown, input area for text, and time of day -->
@@ -105,6 +109,6 @@
       crossorigin="anonymous"
     ></script>
 
-    <script src="script.js"></script>
+    <script src="assets/script.js"></script>
   </body>
 </html>
